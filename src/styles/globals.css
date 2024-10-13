@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-fira-code);
 }
 
 @layer utilities {
@@ -14,8 +14,29 @@ body {
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --font-fira-code: 'Fira Code', monospace;
+    --font-exo-2: 'Exo 2', sans-serif;
+    --background: #ffffff;
+    --background-white: #ffffff;
+    --background-violet: #c69bbd;
+    --background-light-green: #bbddab;
+    --background-pink: #e895ad;
+    --background-yellow: #f7db8b;
+    --background-light-gray: #efefef;
+    --foreground: #220904;
+    --foreground-white: #ffffff;
+    --foreground-gray: #b3b3b3;
+    --foreground-pink: #e895ad;
+
+    --black: #000000;
+    --white: #ffffff;
+    --green: #bbddab;
+    --pink: #e895ad;
+    --light-violet: #c69bbd;
+    --gray-100: #efefef;
+    --gray-200: #d7d7d7;
+    --gray-300: #b3b3b3;
+
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;

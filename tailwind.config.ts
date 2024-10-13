@@ -6,13 +6,34 @@ const config: Config = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}'
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/layouts/**/*.{js,ts,jsx,tsx,mdx}'
   ],
   theme: {
     extend: {
       colors: {
-        background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
+        background: 'var(--background)',
+        'background-white': 'var(--background-white)',
+        'background-violet': 'var(--background-violet)',
+        'background-light-green': 'var(--background-light-green)',
+        'background-pink': 'var(--background-pink)',
+        'background-yellow': 'var(--background-yellow)',
+        'background-light-gray': 'var(--background-light-gray)',
+        foreground: 'var(--foreground)',
+        'foreground-white': 'var(--foreground-white)',
+        'foreground-gray': 'var(--foreground-gray)',
+        'foreground-pink': 'var(--foreground-pink)',
+
+        black: 'var(--black)',
+        white: 'var(--white)',
+        green: 'var(--green)',
+        pink: 'var(--pink)',
+        'light-violet': 'var(--light-violet)',
+        gray: {
+          100: 'var(--gray-100)',
+          200: 'var(--gray-200)',
+          300: 'var(--gray-300)'
+        },
         card: {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))'
@@ -43,19 +64,14 @@ const config: Config = {
         },
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
-        ring: 'hsl(var(--ring))',
-        chart: {
-          '1': 'hsl(var(--chart-1))',
-          '2': 'hsl(var(--chart-2))',
-          '3': 'hsl(var(--chart-3))',
-          '4': 'hsl(var(--chart-4))',
-          '5': 'hsl(var(--chart-5))'
-        }
+        ring: 'hsl(var(--ring))'
       },
-      borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)'
+      screens: {
+        '360': '360px',
+        '480': '480px',
+        '768': '768px',
+        '960': '960px',
+        '1216': '1216px'
       }
     }
   },
