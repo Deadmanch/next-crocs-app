@@ -10,18 +10,10 @@ interface BurgerProps extends HTMLAttributes<HTMLButtonElement> {
   onClick: () => void
 }
 
-export const Burger = ({
-  className,
-  isOpen,
-  onClick,
-  ...props
-}: BurgerProps) => {
+export const Burger = ({ className, isOpen, onClick, ...props }: BurgerProps) => {
   return (
     <button
-      className={cn(
-        'flex h-[40px] w-[40px] flex-col items-end justify-center gap-2',
-        className
-      )}
+      className={cn('flex h-[40px] w-[40px] flex-col items-end justify-center gap-2', className)}
       onClick={onClick}
       {...props}
     >

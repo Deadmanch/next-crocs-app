@@ -1,4 +1,5 @@
 import { Title, Text, Badge, Separator, Button, Input } from '@/components'
+import { Payment, Social } from '@/layout'
 
 export default function Home() {
   return (
@@ -8,12 +9,10 @@ export default function Home() {
         <Title tag='h2'>Title H2</Title>
         <Title tag='h3'>Title H3</Title>
         <Text>
-          Reimagine Comfort with Every Step Explore Crocs for innovative and
-          stylish designs
+          Reimagine Comfort with Every Step Explore Crocs for innovative and stylish designs
         </Text>
         <Text tag='span'>
-          Reimagine Comfort with Every Step Explore Crocs for innovative and
-          stylish designs
+          Reimagine Comfort with Every Step Explore Crocs for innovative and stylish designs
         </Text>
       </div>
       <Separator orientation='horizontal' />
@@ -27,6 +26,10 @@ export default function Home() {
         <Button>Button</Button>
         <Button loading>Button</Button>
         <Input type='text' placeholder='Name' />
+      </div>
+      <div>
+        <Social />
+        <Payment />
       </div>
     </div>
   )

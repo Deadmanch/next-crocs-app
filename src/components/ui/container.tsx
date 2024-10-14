@@ -3,7 +3,5 @@ import { cn } from '@/lib/utils'
 interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export const Container = ({ className, ...props }: ContainerProps) => {
-  return (
-    <div className={cn('mx-auto max-w-screen-1216', className)} {...props} />
-  )
+  return <div className={cn('mx-auto', className)} {...props} />
 }

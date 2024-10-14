@@ -11,10 +11,7 @@ export const Text = forwardRef<HTMLParagraphElement, TextProps>(
   ({ className, tag: Tag = 'p', ...props }, ref) => {
     return (
       <Tag
-        className={cn(
-          'font-fira text-[17px] font-normal text-foreground',
-          className
-        )}
+        className={cn('font-fira text-[17px] font-normal text-foreground', className)}
         ref={ref}
         {...props}
       />

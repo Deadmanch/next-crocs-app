@@ -4,9 +4,7 @@ const nextConfig = {
     domains: ['crocs-bucket.storage.yandexcloud.net']
   },
   webpack(config) {
-    const fileLoaderRule = config.module.rules.find((rule) =>
-      rule.test?.test?.('.svg')
-    )
+    const fileLoaderRule = config.module.rules.find((rule) => rule.test?.test?.('.svg'))
 
     config.module.rules.push(
       {

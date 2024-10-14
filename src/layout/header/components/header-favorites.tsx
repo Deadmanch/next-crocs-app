@@ -4,10 +4,7 @@ import FavoriteIcon from '@/public/icons/header/heart.svg'
 
 interface HeaderFavoritesProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-export const HeaderFavorites = ({
-  className,
-  ...props
-}: HeaderFavoritesProps) => {
+export const HeaderFavorites = ({ className, ...props }: HeaderFavoritesProps) => {
   return (
     <div className={cn('relative', className)} {...props}>
       <FavoriteIcon />

@@ -4,10 +4,7 @@ import { cn } from '@/lib/utils'
 
 import { NavLink, Separator } from '@/components'
 
-import {
-  NAVIGATION_MENU_MOBILE,
-  NavigationRouting
-} from '@/mock/navigatio-routing'
+import { NAVIGATION_MENU_MOBILE, NavigationRouting } from '@/mock/navigatiot-routing'
 import { HeaderSearch } from './header-search'
 
 interface MobileMenuProps extends React.HTMLAttributes<HTMLDivElement> {

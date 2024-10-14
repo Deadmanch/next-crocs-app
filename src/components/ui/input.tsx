@@ -4,8 +4,7 @@ import { FieldError } from 'react-hook-form'
 import { cn } from '@/lib/utils'
 import { Text } from '@/components'
 
-export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   error?: FieldError
 }
 
