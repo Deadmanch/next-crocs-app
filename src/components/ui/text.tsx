@@ -9,7 +9,16 @@ interface TextProps extends React.HTMLAttributes<HTMLParagraphElement> {
 
 export const Text = forwardRef<HTMLParagraphElement, TextProps>(
   ({ className, tag: Tag = 'p', ...props }, ref) => {
-    return <Tag className={cn('text-base', className)} ref={ref} {...props} />
+    return (
+      <Tag
+        className={cn(
+          'font-fira text-[17px] font-normal text-foreground',
+          className
+        )}
+        ref={ref}
+        {...props}
+      />
+    )
   }
 )
 Text.displayName = 'Text'

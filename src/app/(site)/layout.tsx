@@ -1,4 +1,6 @@
 import { Metadata } from 'next'
+import { Container } from '@/components'
+import { Header } from '@/layout'
 
 export const metadata: Metadata = {
   title: 'Crocs | Crocs Next App',
@@ -10,5 +12,16 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  return <main className='flex-auto'>{children}</main>
+  return (
+    <>
+      <div className='border-b border-border bg-background-light-green'>
+        <Container>
+          <Header />
+        </Container>
+      </div>
+      <Container className='flex flex-col'>
+        <main className='flex-auto'>{children}</main>
+      </Container>
+    </>
+  )
 }

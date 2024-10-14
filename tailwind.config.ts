@@ -7,7 +7,7 @@ const config: Config = {
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/layouts/**/*.{js,ts,jsx,tsx,mdx}'
+    './src/layout/**/*.{js,ts,jsx,tsx,mdx}'
   ],
   theme: {
     extend: {
@@ -16,6 +16,7 @@ const config: Config = {
         'background-white': 'var(--background-white)',
         'background-violet': 'var(--background-violet)',
         'background-light-green': 'var(--background-light-green)',
+        'background-dark-green': 'var(--background-dark-green)',
         'background-pink': 'var(--background-pink)',
         'background-yellow': 'var(--background-yellow)',
         'background-light-gray': 'var(--background-light-gray)',
@@ -27,44 +28,33 @@ const config: Config = {
         black: 'var(--black)',
         white: 'var(--white)',
         green: 'var(--green)',
+        'dark-green': 'var(--dark-green)',
         pink: 'var(--pink)',
         'light-violet': 'var(--light-violet)',
         gray: {
           100: 'var(--gray-100)',
           200: 'var(--gray-200)',
-          300: 'var(--gray-300)'
+          300: 'var(--gray-300)',
+          400: 'var(--gray-400)',
+          500: 'var(--gray-500)'
         },
-        card: {
-          DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))'
-        },
+        red: 'var(--red)',
         popover: {
           DEFAULT: 'hsl(var(--popover))',
           foreground: 'hsl(var(--popover-foreground))'
         },
         primary: {
-          DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))'
-        },
-        secondary: {
-          DEFAULT: 'hsl(var(--secondary))',
-          foreground: 'hsl(var(--secondary-foreground))'
+          DEFAULT: 'var(--primary)',
+          foreground: 'var(--primary-foreground)'
         },
         muted: {
-          DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))'
+          DEFAULT: 'var(--muted)',
+          foreground: 'var(--muted-foreground)'
         },
-        accent: {
-          DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))'
-        },
-        destructive: {
-          DEFAULT: 'hsl(var(--destructive))',
-          foreground: 'hsl(var(--destructive-foreground))'
-        },
-        border: 'hsl(var(--border))',
-        input: 'hsl(var(--input))',
-        ring: 'hsl(var(--ring))'
+
+        border: 'var(--border)',
+        input: 'var(--input)',
+        ring: 'var(--ring)'
       },
       screens: {
         '360': '360px',
@@ -72,6 +62,10 @@ const config: Config = {
         '768': '768px',
         '960': '960px',
         '1216': '1216px'
+      },
+      fontFamily: {
+        fira: ['var(--font-fira-code)'],
+        exo: ['var(--font-exo-2)']
       }
     }
   },

@@ -1,22 +1,30 @@
 import * as React from 'react'
 
+import { FieldError } from 'react-hook-form'
 import { cn } from '@/lib/utils'
+import { Text } from '@/components'
 
 export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {}
+  extends React.InputHTMLAttributes<HTMLInputElement> {
+  error?: FieldError
+}
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type, ...props }, ref) => {
+  ({ className, type, error, ...props }, ref) => {
     return (
-      <input
-        type={type}
-        className={cn(
-          'flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50',
-          className
-        )}
-        ref={ref}
-        {...props}
-      />
+      <>
+        <input
+          type={type}
+          className={cn(
+            'flex h-12 w-full border border-input bg-white px-5 py-4 font-fira text-[17px] text-foreground transition-colors placeholder:text-muted-foreground focus-visible:border-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50',
+            className,
+            error && 'border-red'
+          )}
+          ref={ref}
+          {...props}
+        />
+        {error && <Text className='text-red'>{error.message}</Text>}
+      </>
     )
   }
 )
