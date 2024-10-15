@@ -56,10 +56,10 @@ export const FooterNavigation = ({ className }: FooterNavigationProps) => {
           </Text>
           <ul className='flex flex-col gap-3'>
             <li>
-              <Text>Monday-Friday 7:00AM-8:00PM</Text>
+              <Text>Monday-Friday 7:00AM&#8209;8:00PM</Text>
             </li>
             <li>
-              <Text>Saturday-Sunday 8:00AM-5:00PM</Text>
+              <Text>Saturday-Sunday 8:00AM&#8209;5:00PM</Text>
             </li>
             <li>
               <a className='transition-colors hover:text-dark-green' href='tel:+18609527627'>
