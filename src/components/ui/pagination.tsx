@@ -1,98 +1,144 @@
-import * as React from 'react'
-import { ChevronLeftIcon, ChevronRightIcon, DotsHorizontalIcon } from '@radix-ui/react-icons'
-
+import { DotsHorizontalIcon } from '@radix-ui/react-icons'
 import { cn } from '@/lib/utils'
-import { ButtonProps, buttonVariants } from '@/components/ui/button'
+import { Button } from '@/components'
+import ArrowLeftIcon from '@/public/icons/arrow-left.svg'
+import ArrowRightIcon from '@/public/icons/arrow.svg'
 
-const Pagination = ({ className, ...props }: React.ComponentProps<'nav'>) => (
-  <nav
-    role='navigation'
-    aria-label='pagination'
-    className={cn('mx-auto flex w-full justify-center', className)}
-    {...props}
-  />
-)
+export interface PaginationProps {
+  total: number
+  value: number
+  onChange: (page: number) => void
+  className?: string
+}
+
+const Pagination = ({ total, value, onChange, className }: PaginationProps) => {
+  const isFirstPage = value === 1
+  const isLastPage = value === total
+
+  const handlePrev = () => {
+    if (!isFirstPage) {
+      onChange(value - 1)
+    }
+  }
+
+  const handleNext = () => {
+    if (!isLastPage) {
+      onChange(value + 1)
+    }
+  }
+
+  const paginationItems = () => {
+    const range = []
+    let start = Math.max(1, value - 2)
+    let end = Math.min(total, value + 2)
+
+    if (value <= 3) {
+      start = 1
+      end = Math.min(5, total)
+    } else if (value > total - 3) {
+      start = total - 4
+      end = total
+    }
+
+    for (let i = start; i <= end; i++) {
+      range.push(
+        <li key={i}>
+          <Button
+            onClick={() => onChange(i)}
+            variant={i === value ? 'default' : 'ghost'}
+            size='small'
+            aria-current={i === value ? 'page' : undefined}
+          >
+            {i}
+          </Button>
+        </li>
+      )
+    }
+
+    if (start > 1) {
+      range.unshift(
+        <li key='start-dots'>
+          <DotsHorizontalIcon className='size-5' />
+        </li>
+      )
+      range.unshift(
+        <li key={1}>
+          <Button
+            onClick={() => onChange(1)}
+            variant={value === 1 ? 'default' : 'ghost'}
+            size='small'
+            aria-current={value === 1 ? 'page' : undefined}
+          >
+            1
+          </Button>
+        </li>
+      )
+    }
+
+    if (end < total) {
+      range.push(
+        <li key='end-dots'>
+          <DotsHorizontalIcon className='size-5' />
+        </li>
+      )
+      range.push(
+        <li key={total}>
+          <Button
+            onClick={() => onChange(total)}
+            variant={value === total ? 'default' : 'ghost'}
+            size='small'
+            aria-current={value === total ? 'page' : undefined}
+          >
+            {total}
+          </Button>
+        </li>
+      )
+    }
+
+    return range
+  }
+
+  return (
+    <nav
+      role='navigation'
+      aria-label='pagination'
+      className={cn('mx-auto flex w-full justify-center', className)}
+    >
+      <ul className='flex flex-row items-center gap-1'>
+        <li>
+          <Button
+            onClick={handlePrev}
+            variant='ghost'
+            disabled={isFirstPage}
+            size='default'
+            aria-label='Go to previous page'
+            className='group gap-2 pl-2.5'
+          >
+            <ArrowLeftIcon className='size-5 transition-colors group-hover:stroke-white group-disabled:stroke-muted-foreground' />
+            <span>Prev</span>
+          </Button>
+        </li>
+
+        {paginationItems()}
+
+        <li>
+          <Button
+            onClick={handleNext}
+            disabled={isLastPage}
+            variant='ghost'
+            size='default'
+            aria-label='Go to next page'
+            className='group gap-1 pr-2.5'
+          >
+            <span>Next</span>
+            <ArrowRightIcon className='size-5 transition-colors group-hover:stroke-white group-disabled:stroke-muted-foreground' />
+          </Button>
+        </li>
+      </ul>
+    </nav>
+  )
+}
+
 Pagination.displayName = 'Pagination'
 
-const PaginationContent = React.forwardRef<HTMLUListElement, React.ComponentProps<'ul'>>(
-  ({ className, ...props }, ref) => (
-    <ul ref={ref} className={cn('flex flex-row items-center gap-1', className)} {...props} />
-  )
-)
-PaginationContent.displayName = 'PaginationContent'
-
-const PaginationItem = React.forwardRef<HTMLLIElement, React.ComponentProps<'li'>>(
-  ({ className, ...props }, ref) => <li ref={ref} className={cn('', className)} {...props} />
-)
-PaginationItem.displayName = 'PaginationItem'
-
-type PaginationLinkProps = {
-  isActive?: boolean
-} & Pick<ButtonProps, 'size'> &
-  React.ComponentProps<'a'>
-
-const PaginationLink = ({ className, isActive, size = 'icon', ...props }: PaginationLinkProps) => (
-  <a
-    aria-current={isActive ? 'page' : undefined}
-    className={cn(
-      buttonVariants({
-        variant: isActive ? 'outline' : 'ghost',
-        size
-      }),
-      className
-    )}
-    {...props}
-  />
-)
-PaginationLink.displayName = 'PaginationLink'
-
-const PaginationPrevious = ({
-  className,
-  ...props
-}: React.ComponentProps<typeof PaginationLink>) => (
-  <PaginationLink
-    aria-label='Go to previous page'
-    size='default'
-    className={cn('gap-1 pl-2.5', className)}
-    {...props}
-  >
-    <ChevronLeftIcon className='size-4' />
-    <span>Previous</span>
-  </PaginationLink>
-)
-PaginationPrevious.displayName = 'PaginationPrevious'
-
-const PaginationNext = ({ className, ...props }: React.ComponentProps<typeof PaginationLink>) => (
-  <PaginationLink
-    aria-label='Go to next page'
-    size='default'
-    className={cn('gap-1 pr-2.5', className)}
-    {...props}
-  >
-    <span>Next</span>
-    <ChevronRightIcon className='size-4' />
-  </PaginationLink>
-)
-PaginationNext.displayName = 'PaginationNext'
-
-const PaginationEllipsis = ({ className, ...props }: React.ComponentProps<'span'>) => (
-  <span
-    aria-hidden
-    className={cn('flex h-9 w-9 items-center justify-center', className)}
-    {...props}
-  >
-    <DotsHorizontalIcon className='size-4' />
-    <span className='sr-only'>More pages</span>
-  </span>
-)
-PaginationEllipsis.displayName = 'PaginationEllipsis'
-
-export {
-  Pagination,
-  PaginationContent,
-  PaginationLink,
-  PaginationItem,
-  PaginationPrevious,
-  PaginationNext,
-  PaginationEllipsis
-}
+export { Pagination }

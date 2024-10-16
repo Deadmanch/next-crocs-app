@@ -31,7 +31,7 @@ export const HeroBlock = ({ className, ...props }: HeroBlockProps) => {
               <Text className='text-center'>
                 Reimagine Comfort Every Step <br /> Explore Crocs for innovative and stylish designs
               </Text>
-              <LinkButton href={NavigationRouting.CATALOG} className='768:mx-auto 768:w-[186px]'>
+              <LinkButton href={NavigationRouting.CATEGORY} className='768:mx-auto 768:w-[186px]'>
                 Shop now
               </LinkButton>
             </div>

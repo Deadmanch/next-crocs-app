@@ -14,7 +14,7 @@ export const API = {
     update: BASE_URL + API_ROUTES.USER + '/update'
   },
   category: {
-    getBySlug: BASE_URL + API_ROUTES.CATEGORY + '/getBySlug',
+    getBySlug: BASE_URL + API_ROUTES.CATEGORY + '/bySlug',
     getAll: BASE_URL + API_ROUTES.CATEGORY,
     getById: BASE_URL + API_ROUTES.CATEGORY
   },
@@ -23,6 +23,7 @@ export const API = {
     getBySlug: BASE_URL + API_ROUTES.PRODUCT + '/bySlug',
     getById: BASE_URL + API_ROUTES.PRODUCT,
     getByTitle: BASE_URL + API_ROUTES.PRODUCT + '/byTitle',
+    getByCategory: BASE_URL + API_ROUTES.PRODUCT + '/byCategory',
     filter: {
       getStartFilter: BASE_URL + API_ROUTES.PRODUCT + '/filter-data',
       getFilter: BASE_URL + API_ROUTES.PRODUCT + '/filter'

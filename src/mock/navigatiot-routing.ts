@@ -1,26 +1,26 @@
 export enum NavigationRouting {
   HOME = '/',
-  CATALOG = '/catalog',
+  CATEGORY = '/category',
   CONTACTS = '/contacts',
   ABOUT = '/about',
   FAVORITES = '/favorites',
   PROFILE = '/profile',
   CHECKOUT = '/checkout',
-  WOMAN = '/catalog/woman',
-  MAN = '/catalog/man',
-  KIDS = '/catalog/kids'
+  WOMEN = '/category/women',
+  MEN = '/category/men',
+  KIDS = '/category/kids'
 }
 
 export const NAVIGATION_MENU = [
   {
     id: 1,
-    name: 'Woman',
-    href: NavigationRouting.WOMAN
+    name: 'Women',
+    href: NavigationRouting.WOMEN
   },
   {
     id: 2,
-    name: 'Man',
-    href: NavigationRouting.MAN
+    name: 'Men',
+    href: NavigationRouting.MEN
   },
   {
     id: 3,
@@ -37,12 +37,12 @@ export const NAVIGATION_MENU_MOBILE = [
   {
     id: 1,
     name: 'Woman',
-    href: NavigationRouting.WOMAN
+    href: NavigationRouting.WOMEN
   },
   {
     id: 2,
     name: 'Man',
-    href: NavigationRouting.MAN
+    href: NavigationRouting.MEN
   },
   {
     id: 3,
@@ -54,13 +54,13 @@ export const NAVIGATION_MENU_MOBILE = [
 export const NAVIGATION_MENU_FOOTER = [
   {
     id: 1,
-    name: 'Woman',
-    href: NavigationRouting.WOMAN
+    name: 'Women',
+    href: NavigationRouting.WOMEN
   },
   {
     id: 2,
-    name: 'Man',
-    href: NavigationRouting.MAN
+    name: 'Men',
+    href: NavigationRouting.MEN
   },
   {
     id: 3,

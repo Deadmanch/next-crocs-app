@@ -11,10 +11,13 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          'border bg-primary text-primary-foreground hover:bg-black hover:text-white active:bg-black active:text-white'
+          'border bg-primary text-primary-foreground hover:bg-black hover:text-white active:bg-black active:text-white',
+        ghost:
+          'text-primary-foreground hover:bg-black hover:text-white disabled:cursor-not-allowed disabled:bg-transparent disabled:text-muted-foreground'
       },
       size: {
         default: 'h-[48px] px-[30px] py-[15px]',
+        small: 'h-[40px] px-[15px] py-[10px]',
         icon: 'size-9'
       }
     },
