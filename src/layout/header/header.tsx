@@ -6,7 +6,7 @@ import Logo from '@/public/logo.svg'
 import UserIcon from '@/public/icons/header/profile.svg'
 import { NAVIGATION_MENU, NavigationRouting } from '@/mock/navigatiot-routing'
 import { Burger, HeaderCart, HeaderFavorites, HeaderSearch, MobileMenu } from '@/layout'
-import { Container, NavLink } from '@/components'
+import { Container, Button } from '@/components'
 
 interface HeaderProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -26,7 +26,9 @@ export const Header = ({ className, ...props }: HeaderProps) => {
               <ul className='flex items-center gap-4 1216:gap-[31px]'>
                 {NAVIGATION_MENU.map((item) => (
                   <li key={item.id}>
-                    <NavLink href={item.href}>{item.name}</NavLink>
+                    <Button asChild variant='link' size='link'>
+                      <Link href={item.href}>{item.name}</Link>
+                    </Button>
                   </li>
                 ))}
               </ul>

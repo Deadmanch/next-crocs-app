@@ -43,6 +43,10 @@ const config: Config = {
           DEFAULT: 'hsl(var(--popover))',
           foreground: 'hsl(var(--popover-foreground))'
         },
+        card: {
+          DEFAULT: 'var(--card)',
+          foreground: 'var(--card-foreground)'
+        },
         primary: {
           DEFAULT: 'var(--primary)',
           foreground: 'var(--primary-foreground)'
@@ -66,9 +70,12 @@ const config: Config = {
       fontFamily: {
         fira: ['var(--font-fira-code)'],
         exo: ['var(--font-exo-2)']
+      },
+      flex: {
+        '200': '0 0 200px'
       }
     }
   },
-  plugins: [require('tailwindcss-animate')]
+  plugins: [require('tailwindcss-animate'), require('@tailwindcss/aspect-ratio')]
 }
 export default config

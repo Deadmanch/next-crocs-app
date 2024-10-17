@@ -1,6 +1,7 @@
 import { HTMLAttributes } from 'react'
+import Link from 'next/link'
 import { cn } from '@/lib/utils'
-import { NavLink, Text } from '@/components'
+import { Button, Text } from '@/components'
 import {
   NAVIGATION_MENU_FOOTER,
   NAVIGATION_FOOTER_LINKS_HELP,
@@ -19,7 +20,9 @@ export const FooterNavigation = ({ className }: FooterNavigationProps) => {
           <ul className='flex flex-col gap-3'>
             {NAVIGATION_MENU_FOOTER.map((item) => (
               <li key={item.id}>
-                <NavLink href={item.href}>{item.name}</NavLink>
+                <Button asChild variant='link' size='link'>
+                  <Link href={item.href}>{item.name}</Link>
+                </Button>
               </li>
             ))}
           </ul>
@@ -31,7 +34,9 @@ export const FooterNavigation = ({ className }: FooterNavigationProps) => {
           <ul className='flex flex-col gap-3'>
             {NAVIGATION_FOOTER_LINKS_HELP.map((item) => (
               <li key={item.id}>
-                <NavLink href={item.href}>{item.name}</NavLink>
+                <Button asChild variant='link' size='link'>
+                  <Link href={item.href}>{item.name}</Link>
+                </Button>
               </li>
             ))}
           </ul>
@@ -45,7 +50,9 @@ export const FooterNavigation = ({ className }: FooterNavigationProps) => {
           <ul className='flex flex-col gap-3'>
             {NAVIGATION_FOOTER_LINKS_COMPANY.map((item) => (
               <li key={item.id}>
-                <NavLink href={item.href}>{item.name}</NavLink>
+                <Button asChild variant='link' size='link'>
+                  <Link href={item.href}>{item.name}</Link>
+                </Button>
               </li>
             ))}
           </ul>

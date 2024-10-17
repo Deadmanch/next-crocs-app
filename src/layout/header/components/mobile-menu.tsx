@@ -1,8 +1,9 @@
 import { m } from 'framer-motion'
 
+import Link from 'next/link'
 import { cn } from '@/lib/utils'
 
-import { NavLink, Separator } from '@/components'
+import { Button, Separator } from '@/components'
 
 import { NAVIGATION_MENU_MOBILE, NavigationRouting } from '@/mock/navigatiot-routing'
 import { HeaderSearch } from './header-search'
@@ -48,28 +49,34 @@ export const MobileMenu = ({ isOpen, onClose, className }: MobileMenuProps) => {
             <ul className='flex flex-col gap-5'>
               {NAVIGATION_MENU_MOBILE.map((item) => (
                 <li key={item.id}>
-                  <NavLink href={item.href} onClick={onClose}>
-                    {item.name}
-                  </NavLink>
+                  <Button asChild variant='link' size='link' onClick={onClose}>
+                    <Link href={item.href}>{item.name}</Link>
+                  </Button>
                 </li>
               ))}
             </ul>
             <Separator className='bg-gray-300' />
             <ul className='flex flex-col gap-5'>
               <li>
-                <NavLink href={NavigationRouting.CONTACTS} onClick={onClose}>
-                  Contacts
-                </NavLink>
+                <Button asChild variant='link' size='link' onClick={onClose}>
+                  <Link href={NavigationRouting.CONTACTS} onClick={onClose}>
+                    Contacts
+                  </Link>
+                </Button>
               </li>
               <li>
-                <NavLink href={NavigationRouting.FAVORITES} onClick={onClose}>
-                  Favorites
-                </NavLink>
+                <Button asChild variant='link' size='link' onClick={onClose}>
+                  <Link href={NavigationRouting.FAVORITES} onClick={onClose}>
+                    Favorites
+                  </Link>
+                </Button>
               </li>
               <li>
-                <NavLink href={NavigationRouting.PROFILE} onClick={onClose}>
-                  Account
-                </NavLink>
+                <Button asChild variant='link' size='link' onClick={onClose}>
+                  <Link href={NavigationRouting.PROFILE} onClick={onClose}>
+                    Account
+                  </Link>
+                </Button>
               </li>
             </ul>
           </nav>

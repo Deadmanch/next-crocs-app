@@ -24,6 +24,8 @@ export const API = {
     getById: BASE_URL + API_ROUTES.PRODUCT,
     getByTitle: BASE_URL + API_ROUTES.PRODUCT + '/byTitle',
     getByCategory: BASE_URL + API_ROUTES.PRODUCT + '/byCategory',
+    search: BASE_URL + API_ROUTES.PRODUCT + '/search',
+    getRandom: BASE_URL + API_ROUTES.PRODUCT + '/random',
     filter: {
       getStartFilter: BASE_URL + API_ROUTES.PRODUCT + '/filter-data',
       getFilter: BASE_URL + API_ROUTES.PRODUCT + '/filter'

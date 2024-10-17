@@ -36,12 +36,12 @@ export const NAVIGATION_MENU = [
 export const NAVIGATION_MENU_MOBILE = [
   {
     id: 1,
-    name: 'Woman',
+    name: 'Women',
     href: NavigationRouting.WOMEN
   },
   {
     id: 2,
-    name: 'Man',
+    name: 'Men',
     href: NavigationRouting.MEN
   },
   {

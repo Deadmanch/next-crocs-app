@@ -16,6 +16,9 @@ body {
   a {
     outline-color: var(--black);
   }
+  img {
+    height: 100%;
+  }
 }
 
 @layer base {
@@ -49,10 +52,13 @@ body {
     --gray-500: #646464;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
+    --card: var(--background-light-gray);
+    --card-foreground: var(--foreground);
     --primary: var(--white);
     --primary-foreground: var(--black);
     --muted: var(--gray-500);
     --muted-foreground: var(--gray-300);
+
     --border: var(--black);
     --input: var(--black);
     --ring: var(--background-dark-green);

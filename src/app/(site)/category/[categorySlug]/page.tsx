@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
+import Link from 'next/link'
 import { getAllCategories, getCategoryBySlug, getProductByCategory } from '@/api'
-import { Container, NavLink, Title } from '@/components'
+import { Button, Container, Title } from '@/components'
 import { ICategory, ICategoryResponse, IProductResponse } from '@/interfaces'
 
 export async function generateStaticParams() {
@@ -19,9 +20,9 @@ export default async function CategoryPage({ params }: { params: { categorySlug:
       <div className='flex flex-col gap-2'>
         {products.map((product) => (
           <div key={product.id}>
-            <NavLink href={`/category/${params.categorySlug}/${product.slug}`}>
-              {product.title}
-            </NavLink>
+            <Button asChild variant='link'>
+              <Link href={`/category/${params.categorySlug}/${product.slug}`}>{product.title}</Link>
+            </Button>
           </div>
         ))}
       </div>

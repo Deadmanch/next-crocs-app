@@ -13,11 +13,13 @@ const buttonVariants = cva(
         default:
           'border bg-primary text-primary-foreground hover:bg-black hover:text-white active:bg-black active:text-white',
         ghost:
-          'text-primary-foreground hover:bg-black hover:text-white disabled:cursor-not-allowed disabled:bg-transparent disabled:text-muted-foreground'
+          'text-primary-foreground hover:bg-black hover:text-white disabled:cursor-not-allowed disabled:bg-transparent disabled:text-muted-foreground',
+        link: 'hover:text-dark-green'
       },
       size: {
         default: 'h-[48px] px-[30px] py-[15px]',
         small: 'h-[40px] px-[15px] py-[10px]',
+        link: 'justify-start p-0',
         icon: 'size-9'
       }
     },

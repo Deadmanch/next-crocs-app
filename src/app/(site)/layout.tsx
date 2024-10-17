@@ -16,7 +16,7 @@ export default function RootLayout({
     <Container className='flex min-h-screen flex-col'>
       <Header />
       <main className='flex-auto'>{children}</main>
-        <Footer />
+      <Footer />
     </Container>
   )
 }
