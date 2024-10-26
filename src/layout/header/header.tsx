@@ -15,9 +15,9 @@ export const Header = ({ className, ...props }: HeaderProps) => {
   const toogleMenu = () => setIsMenuOpen(!isMenuOpen)
 
   return (
-    <div className='border-b border-border bg-background-light-green'>
+    <div className='sticky top-0 z-50 border-b border-border bg-background-light-green'>
       <Container className='max-w-screen-1216'>
-        <header className={cn('sticky top-0 z-50 px-[30px] py-5 1216:px-0', className)} {...props}>
+        <header className={cn('px-[30px] py-5 1216:px-0', className)} {...props}>
           <div className='flex items-center justify-between 960:gap-[24px] 1216:gap-[60px]'>
             <Link href={NavigationRouting.HOME}>
               <Logo />

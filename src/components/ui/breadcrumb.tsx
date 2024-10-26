@@ -2,6 +2,7 @@ import * as React from 'react'
 import { ChevronRightIcon, DotsHorizontalIcon } from '@radix-ui/react-icons'
 import { Slot } from '@radix-ui/react-slot'
 
+import Link from 'next/link'
 import { cn } from '@/lib/utils'
 
 const Breadcrumb = React.forwardRef<
@@ -17,7 +18,7 @@ const BreadcrumbList = React.forwardRef<HTMLOListElement, React.ComponentPropsWi
     <ol
       ref={ref}
       className={cn(
-        'flex flex-wrap items-center gap-1.5 break-words text-sm text-muted-foreground sm:gap-2.5',
+        'flex flex-wrap items-center gap-1 break-words text-[15px] text-foreground 480:gap-2',
         className
       )}
       {...props}
@@ -28,23 +29,23 @@ BreadcrumbList.displayName = 'BreadcrumbList'
 
 const BreadcrumbItem = React.forwardRef<HTMLLIElement, React.ComponentPropsWithoutRef<'li'>>(
   ({ className, ...props }, ref) => (
-    <li ref={ref} className={cn('inline-flex items-center gap-1.5', className)} {...props} />
+    <li ref={ref} className={cn('inline-flex items-center gap-2', className)} {...props} />
   )
 )
 BreadcrumbItem.displayName = 'BreadcrumbItem'
 
 const BreadcrumbLink = React.forwardRef<
   HTMLAnchorElement,
-  React.ComponentPropsWithoutRef<'a'> & {
+  React.ComponentPropsWithoutRef<typeof Link> & {
     asChild?: boolean
   }
 >(({ asChild, className, ...props }, ref) => {
-  const Comp = asChild ? Slot : 'a'
+  const Comp = asChild ? Slot : Link
 
   return (
     <Comp
       ref={ref}
-      className={cn('transition-colors hover:text-foreground', className)}
+      className={cn('transition-colors hover:text-dark-green', className)}
       {...props}
     />
   )
@@ -66,12 +67,7 @@ const BreadcrumbPage = React.forwardRef<HTMLSpanElement, React.ComponentPropsWit
 BreadcrumbPage.displayName = 'BreadcrumbPage'
 
 const BreadcrumbSeparator = ({ children, className, ...props }: React.ComponentProps<'li'>) => (
-  <li
-    role='presentation'
-    aria-hidden='true'
-    className={cn('[&>svg]:size-3.5', className)}
-    {...props}
-  >
+  <li role='presentation' aria-hidden='true' className={cn('[&>svg]:size-2', className)} {...props}>
     {children ?? <ChevronRightIcon />}
   </li>
 )

@@ -1,8 +1,7 @@
 import { notFound } from 'next/navigation'
-import Link from 'next/link'
-import { getAllCategories, getCategoryBySlug, getProductByCategory } from '@/api'
-import { Button, Container, Title } from '@/components'
-import { ICategory, ICategoryResponse, IProductResponse } from '@/interfaces'
+import { getAllCategories, getCategoryBySlug } from '@/api'
+import { CategoryList, Container } from '@/components'
+import { ICategory, ICategoryResponse } from '@/interfaces'
 
 export async function generateStaticParams() {
   const categories: ICategoryResponse = await getAllCategories()
@@ -10,22 +9,28 @@ export async function generateStaticParams() {
     categorySlug: category.slug
   }))
 }
-export default async function CategoryPage({ params }: { params: { categorySlug: string } }) {
+export default async function CategoryPage({
+  params,
+  searchParams
+}: {
+  params: { categorySlug: string }
+  searchParams: { page?: string; query?: string }
+}) {
   const category: ICategory = await getCategoryBySlug(params.categorySlug)
+  const currentPage = searchParams?.page || '1'
+  console.log('currentPage', currentPage)
   if (!category) notFound()
-  const { products }: IProductResponse = await getProductByCategory(category.id)
+
   return (
     <Container className='max-w-screen-1216'>
-      <Title>{category.title}</Title>
-      <div className='flex flex-col gap-2'>
-        {products.map((product) => (
-          <div key={product.id}>
-            <Button asChild variant='link'>
-              <Link href={`/category/${params.categorySlug}/${product.slug}`}>{product.title}</Link>
-            </Button>
-          </div>
-        ))}
-      </div>
+      <CategoryList
+        categoryTitle={category.title}
+        categoryId={category.id}
+        categorySlug={category.slug}
+        seoTextRight={category.seoTextRight}
+        seoTextLeft={category.seoTextLeft}
+        currentPage={currentPage}
+      />
     </Container>
   )
 }

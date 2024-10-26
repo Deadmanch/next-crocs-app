@@ -16,9 +16,6 @@ body {
   a {
     outline-color: var(--black);
   }
-  img {
-    height: 100%;
-  }
 }
 
 @layer base {
@@ -72,4 +69,36 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.sample-slider {
+  padding: 0 0 50px 0 !important;
+}
+
+.sample-slider .swiper-pagination-bullet {
+  width: 40px;
+  height: 2px;
+  opacity: 1;
+  background: var(--gray-200);
+  border-radius: 0;
+}
+
+.sample-slider .swiper-pagination-bullet-active {
+  background: var(--foreground);
+}
+
+.list-star {
+  position: relative;
+  padding-left: 2em;
+}
+.list-star li {
+  margin-bottom: 16px;
+}
+.list-star li:before {
+  content: url('/icons/star-list.svg');
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.5em;
+  position: absolute;
+  left: 0;
 }

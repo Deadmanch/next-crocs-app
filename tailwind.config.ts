@@ -60,6 +60,9 @@ const config: Config = {
         input: 'var(--input)',
         ring: 'var(--ring)'
       },
+      listStyleType: {
+        star: 'var(/icons/star-list.svg)'
+      },
       screens: {
         '360': '360px',
         '480': '480px',
@@ -71,8 +74,17 @@ const config: Config = {
         fira: ['var(--font-fira-code)'],
         exo: ['var(--font-exo-2)']
       },
+      gridTemplateColumns: {
+        '2-desc': 'repeat(2, minmax(392px, 1fr))',
+        '2': 'repeat(2, minmax(210px, 1fr))',
+        '3': 'repeat(3, minmax(229px, 1fr))',
+        '4': 'repeat(4, minmax(215px, 1fr))'
+      },
       flex: {
-        '200': '0 0 200px'
+        100: '1 1 100%'
+      },
+      aspectRatio: {
+        '495/760': '368 / 158'
       }
     }
   },

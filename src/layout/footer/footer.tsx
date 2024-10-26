@@ -8,7 +8,7 @@ interface FooterProps extends HTMLAttributes<HTMLDivElement> {}
 
 export const Footer = ({ className, ...props }: FooterProps) => {
   return (
-    <div className='border-t border-border bg-background-light-green'>
+    <div className='mt-5 border-t border-border bg-background-light-green'>
       <Container className='max-w-screen-1216'>
         <footer className={cn('px-5 pb-10 pt-20', className)} {...props}>
           <div className='flex flex-col gap-10'>

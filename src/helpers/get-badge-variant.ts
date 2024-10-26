@@ -3,7 +3,7 @@ import { BadgeProps } from '@/components'
 export const tagToVariantMap: Record<string, BadgeProps['variant']> = {
   New: 'new',
   Sale: 'sale',
-  'Limited Edition': 'limited'
+  Limited: 'limited'
 }
 
 export const getBadgeVariants = (tags: string[]): Array<BadgeProps['variant']> => {

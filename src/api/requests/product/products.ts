@@ -1,12 +1,15 @@
 import { IProduct, IProductResponse } from '@/interfaces'
 import { request, API } from '@/api'
 
-export const getAllProducts = async (): Promise<IProductResponse> => {
+export const getAllProducts = async (
+  limit: string = '10',
+  page: string = '1'
+): Promise<IProductResponse> => {
   return request<IProductResponse>({
     url: API.product.getAll,
     query: {
-      limit: '10',
-      page: '1'
+      limit,
+      page
     }
   })
 }
@@ -29,12 +32,16 @@ export const getProductByTitle = async (title: string): Promise<IProduct> => {
   })
 }
 
-export const getProductByCategory = async (id: number): Promise<IProductResponse> => {
+export const getProductByCategory = async (
+  id: number,
+  limit: string = '10',
+  page: string = '1'
+): Promise<IProductResponse> => {
   return request<IProductResponse>({
     url: API.product.getByCategory + `/${id}`,
     query: {
-      limit: '10',
-      page: '1'
+      limit,
+      page
     }
   })
 }

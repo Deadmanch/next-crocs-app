@@ -8,7 +8,7 @@ export const HeaderFavorites = ({ className, ...props }: HeaderFavoritesProps) =
   return (
     <div className={cn('relative', className)} {...props}>
       <FavoriteIcon />
-      <Counter value={0} />
+      <Counter className='absolute left-[calc(100%-15px)] top-[-5px]' value={2} />
     </div>
   )
 }
