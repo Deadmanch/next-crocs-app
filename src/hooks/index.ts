@@ -1,2 +1,4 @@
 export * from './use-breadcrumbs'
 export * from './use-pagination'
+export * from './use-filters'
+export * from './use-query-filters'

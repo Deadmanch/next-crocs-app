@@ -1,5 +1,6 @@
 'use client'
 import * as React from 'react'
+import { useEffect, useState } from 'react'
 import { usePathname, useSearchParams } from 'next/navigation'
 import {
   Pagination,
@@ -11,6 +12,7 @@ import {
   PaginationEllipsis
 } from '@/components'
 import { usePagination } from '@/hooks'
+import { DEFAULT_PAGE } from '@/constants'
 
 interface CustomPaginationProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
   totalPages: number
@@ -19,11 +21,21 @@ interface CustomPaginationProps extends React.HtmlHTMLAttributes<HTMLDivElement>
 export const CustomPagination = ({ totalPages, className, ...props }: CustomPaginationProps) => {
   const pathname = usePathname()
   const searchParams = useSearchParams()
-  const currentPage = Number(searchParams.get('page')) || 1
+  const [currentPage, setCurrentPage] = useState(Number(searchParams.get('page')) || DEFAULT_PAGE)
+  useEffect(() => {
+    const page = Number(searchParams.get('page')) || DEFAULT_PAGE
+    if (page !== currentPage) {
+      setCurrentPage(page)
+    }
+  }, [searchParams])
+
   const pages = usePagination({ currentPage, totalPages })
 
   const createPageURL = (pageNumber: number | string) => {
     const params = new URLSearchParams(searchParams)
+    if (Number(pageNumber) === 1) {
+      params.delete('page')
+    }
     params.set('page', pageNumber.toString())
     return `${pathname}?${params.toString()}`
   }

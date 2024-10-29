@@ -1,5 +1,5 @@
 export interface IGetFiltersProductDto {
-  categoryId: number
+  categoryId?: number
   minPrice?: number
   maxPrice?: number
   colorIds?: number[]

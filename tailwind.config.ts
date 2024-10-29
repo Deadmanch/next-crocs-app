@@ -76,9 +76,9 @@ const config: Config = {
       },
       gridTemplateColumns: {
         '2-desc': 'repeat(2, minmax(392px, 1fr))',
-        '2': 'repeat(2, minmax(210px, 1fr))',
-        '3': 'repeat(3, minmax(229px, 1fr))',
-        '4': 'repeat(4, minmax(215px, 1fr))'
+        '2-category': 'repeat(2, minmax(210px, 1fr))',
+        '3-category': 'repeat(3, minmax(229px, 1fr))',
+        '4-category': 'repeat(4, minmax(215px, 1fr))'
       },
       flex: {
         100: '1 1 100%'
