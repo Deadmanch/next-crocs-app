@@ -10,7 +10,8 @@ import {
   Sheet,
   SheetTrigger,
   SheetClose,
-  SheetContent
+  SheetContent,
+  SheetFooter
 } from '@/components'
 import { useFilters, useQueryFilters } from '@/hooks'
 import { ICategory, IFilterResponse } from '@/interfaces'
@@ -40,14 +41,21 @@ export const FilterDrawer = ({ filtersData, isSelect = false, categories }: Filt
           <FilterIcon className='group-hover:fill-white' />
         </Button>
       </SheetTrigger>
-      <SheetContent side='left'>
+      <SheetContent side='left' className='overflow-scroll'>
         <div className='flex flex-col gap-5 text-center'>
           {isSelect && (
             <div className='flex flex-col gap-4'>
               <Title tag='h3' className='font-[20px]'>
                 Category
               </Title>
-              {categories && <CategorySelect categories={categories} />}
+              {categories && (
+                <CategorySelect
+                  className='w-full'
+                  value={filters.categoryId !== undefined ? String(filters.categoryId) : ''}
+                  onChange={(id) => filters.setCategoryId(Number(id))}
+                  categories={categories}
+                />
+              )}
             </div>
           )}
           <div className='flex flex-col gap-4'>
@@ -118,6 +126,11 @@ export const FilterDrawer = ({ filtersData, isSelect = false, categories }: Filt
               ))}
             </div>
           </div>
+          <SheetFooter>
+            <SheetClose>
+              <Button className='w-full'>Show results</Button>
+            </SheetClose>
+          </SheetFooter>
         </div>
       </SheetContent>
     </Sheet>

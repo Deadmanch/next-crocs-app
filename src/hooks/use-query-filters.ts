@@ -22,7 +22,6 @@ export const useQueryFilters = (filters: IFilters) => {
   useEffect(() => {
     if (isMounted.current) {
       const currentPage = searchParams.get('page') || DEFAULT_PAGE
-
       const params: QueryParams = {
         ...filters.priceRange,
         categoryId: filters.categoryId,

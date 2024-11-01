@@ -35,6 +35,7 @@ const config: Config = {
           100: 'var(--gray-100)',
           200: 'var(--gray-200)',
           300: 'var(--gray-300)',
+          '300/50': 'rgba(179, 179, 179, 0.5)',
           400: 'var(--gray-400)',
           500: 'var(--gray-500)'
         },

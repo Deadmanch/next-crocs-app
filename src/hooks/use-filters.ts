@@ -26,7 +26,6 @@ interface IReturnProps extends IFilters {
   setCategoryId: (value: number) => void
   setColorIds: (value: number) => void
   setSizeIds: (value: number) => void
-  resetFilters: () => void
 }
 
 export const useFilters = (): IReturnProps => {
@@ -37,13 +36,6 @@ export const useFilters = (): IReturnProps => {
   const [sizes, { toggle: toggleSize }] = useSet(
     new Set<number>(searchParams.get('sizeIds')?.split(',').map(Number))
   )
-  const resetFilters = () => {
-    searchParams.delete('categoryId')
-    searchParams.delete('minPrice')
-    searchParams.delete('maxPrice')
-    searchParams.delete('colorIds')
-    searchParams.delete('sizeIds')
-  }
 
   const [categoryId, setCategoryId] = useState<number | undefined>(
     Number(searchParams.get('categoryId')) || undefined
@@ -66,12 +58,11 @@ export const useFilters = (): IReturnProps => {
       sizes,
       colors,
       categoryId,
-      resetFilters,
       setPriceRange: updatePrice,
       setCategoryId: updateCategoryId,
       setColorIds: toggleColor,
       setSizeIds: toggleSize
     }),
-    [priceRange, sizes, colors, categoryId, updateCategoryId, toggleColor, toggleSize]
+    [priceRange, sizes, colors, categoryId, toggleColor, toggleSize]
   )
 }

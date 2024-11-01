@@ -1,4 +1,4 @@
-import { getFilter, getStartFilter } from '@/api'
+import { getAllCategories, getFilter, getStartFilter } from '@/api'
 import {
   Container,
   Title,
@@ -11,9 +11,10 @@ import {
 } from '@/components'
 import { DEFAULT_PAGE_SIZE } from '@/constants'
 import { ISearchParams, transformSearchParams } from '@/helpers'
-import { IProductResponse } from '@/interfaces'
+import { ICategoryResponse, IProductResponse } from '@/interfaces'
 
 export default async function AllProducts({ searchParams }: { searchParams: ISearchParams }) {
+  const { categories }: ICategoryResponse = await getAllCategories()
   const { page, minPrice, maxPrice, colorIds, sizeIds, categoryId } =
     transformSearchParams(searchParams)
   const { products, total }: IProductResponse = await getFilter({
@@ -37,7 +38,7 @@ export default async function AllProducts({ searchParams }: { searchParams: ISea
               <Title>All Products</Title>
             </div>
             <div className='flex items-center justify-between'>
-              <FilterDrawer filtersData={filters} />
+              <FilterDrawer isSelect categories={categories} filtersData={filters} />
               <SortSelect />
             </div>
             <ProductGridList products={products} />
