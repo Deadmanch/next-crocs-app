@@ -45,7 +45,8 @@ export const request = async <T, B = unknown>({
       method,
       headers: fetchHeaders,
       body: body ? JSON.stringify(body) : undefined,
-      credentials: 'include'
+      credentials: 'include',
+      mode: 'no-cors'
     })
 
     if (!res.ok) {
