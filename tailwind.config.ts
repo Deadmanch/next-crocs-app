@@ -86,6 +86,9 @@ const config: Config = {
       },
       aspectRatio: {
         '495/760': '368 / 158'
+      },
+      boxShadow: {
+        card: '0 2px 5px 0 #e5e5e5'
       }
     }
   },

@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { Container } from '@/components'
+import { ArrowUp, Container } from '@/components'
 import { Footer, Header } from '@/layout'
 
 export const metadata: Metadata = {
@@ -17,6 +17,7 @@ export default function RootLayout({
       <Header />
       <main className='flex-auto'>{children}</main>
       <Footer />
+      <ArrowUp />
     </Container>
   )
 }

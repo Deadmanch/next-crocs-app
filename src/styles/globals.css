@@ -72,7 +72,7 @@ body {
 }
 
 .sample-slider {
-  padding: 0 0 50px 0 !important;
+  padding: 0 0 40px 0 !important;
 }
 
 .sample-slider .swiper-pagination-bullet {
@@ -81,10 +81,24 @@ body {
   opacity: 1;
   background: var(--gray-200);
   border-radius: 0;
+  bottom: 5px;
 }
 
 .sample-slider .swiper-pagination-bullet-active {
   background: var(--foreground);
+}
+.GallerySwiper {
+  width: 100%;
+  height: 600px;
+}
+
+.GallerySwiperThumbs {
+  height: 120px;
+  width: 100%;
+}
+
+.GallerySwiperThumbs .swiper-slide-thumb-active {
+  border: 1px solid var(--black);
 }
 
 .list-star {
@@ -101,4 +115,7 @@ body {
   margin-right: 0.5em;
   position: absolute;
   left: 0;
+}
+.rfm-marquee {
+  z-index: -1 !important;
 }

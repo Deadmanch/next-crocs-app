@@ -15,7 +15,6 @@ export const getStartFilterByCategory = async (id: number): Promise<IFilterRespo
 }
 
 export const getFilter = async (dto: IGetFiltersProductDto): Promise<IProductResponse> => {
-  console.log('DTO', dto)
   return request<IProductResponse>({
     url: API.product.filter.getFilter,
     query: dto

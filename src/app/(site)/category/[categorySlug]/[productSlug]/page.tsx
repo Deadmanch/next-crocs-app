@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 import { getAllProducts, getProductBySlug } from '@/api'
-import { Container, Title } from '@/components'
+import { ProductClientPage } from '@/components'
 import { IProduct, IProductResponse } from '@/interfaces'
 
 export async function generateStaticParams() {
@@ -17,9 +17,5 @@ export default async function ProductPage({ params }: { params: { productSlug: s
   const product: IProduct = await getProductBySlug(params.productSlug)
   if (!product) notFound()
 
-  return (
-    <Container className='max-w-screen-1216'>
-      <Title>{product.title}</Title>
-    </Container>
-  )
+  return <ProductClientPage product={product} />
 }

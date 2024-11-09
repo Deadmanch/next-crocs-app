@@ -7,13 +7,6 @@ interface IPriceRangeProps {
   maxPrice?: number
 }
 
-interface IQueryParams extends IPriceRangeProps {
-  categoryId?: number
-  colorIds: number
-  sizeIds: number
-  priceRange: IPriceRangeProps
-}
-
 export interface IFilters {
   categoryId?: number
   colors: Set<number>
@@ -29,7 +22,7 @@ interface IReturnProps extends IFilters {
 }
 
 export const useFilters = (): IReturnProps => {
-  const searchParams = useSearchParams() as unknown as Map<keyof IQueryParams, string>
+  const searchParams = useSearchParams()
   const [colors, { toggle: toggleColor }] = useSet(
     new Set<number>(searchParams.get('colorIds')?.split(',').map(Number))
   )

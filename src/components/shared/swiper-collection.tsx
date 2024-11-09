@@ -34,14 +34,6 @@ const mockData = [
   {
     id: 6,
     src: '/images/collections/sponge-bob.png'
-  },
-  {
-    id: 7,
-    src: '/images/collections/disney.png'
-  },
-  {
-    id: 8,
-    src: '/images/collections/marvel.png'
   }
 ]
 interface SwiperCollectionProps extends React.HTMLAttributes<HTMLDivElement> {}

@@ -45,3 +45,12 @@ export const getProductByCategory = async (
     }
   })
 }
+
+export const searchProductsByTitle = async (query: string): Promise<IProduct[]> => {
+  return request<IProduct[]>({
+    url: API.product.search,
+    query: {
+      query
+    }
+  })
+}

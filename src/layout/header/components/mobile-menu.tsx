@@ -44,7 +44,7 @@ export const MobileMenu = ({ isOpen, onClose, className }: MobileMenuProps) => {
     >
       {isOpen && (
         <div className='flex flex-col gap-10 p-5'>
-          <HeaderSearch className='768:hidden' />
+          <HeaderSearch onClose={onClose} className='768:hidden' />
           <nav className='flex flex-col gap-10'>
             <ul className='flex flex-col gap-5'>
               {NAVIGATION_MENU_MOBILE.map((item) => (

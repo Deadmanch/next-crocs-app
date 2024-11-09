@@ -34,7 +34,6 @@ export const request = async <T, B = unknown>({
       if (queryString) {
         url = `${url}?${queryString}`
       }
-      console.log('@Query-URL', url)
     }
 
     const fetchHeaders = {
@@ -45,7 +44,8 @@ export const request = async <T, B = unknown>({
     const res = await fetch(url, {
       method,
       headers: fetchHeaders,
-      body: body ? JSON.stringify(body) : undefined
+      body: body ? JSON.stringify(body) : undefined,
+      credentials: 'include'
     })
 
     if (!res.ok) {

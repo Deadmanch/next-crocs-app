@@ -1,4 +1,3 @@
-'use client'
 import * as React from 'react'
 import FavoritesIcon from '@/public/icons/header/heart.svg'
 import { cn } from '@/lib/utils'
@@ -10,6 +9,12 @@ interface FavoritesProps extends React.HTMLAttributes<HTMLButtonElement> {
 
 export const FavoritesButton = React.forwardRef<HTMLButtonElement, FavoritesProps>(
   ({ isFavorite, onFavoriteClick, className, ...props }, ref) => {
+    const [isRendered, setIsRendered] = React.useState(false)
+
+    React.useEffect(() => {
+      setIsRendered(true)
+    }, [])
+
     return (
       <button
         ref={ref}
@@ -17,7 +22,9 @@ export const FavoritesButton = React.forwardRef<HTMLButtonElement, FavoritesProp
         className={cn('flex items-center justify-center', className)}
         {...props}
       >
-        <FavoritesIcon className={cn('', isFavorite ? 'fill-pink' : 'fill-none stroke-black')} />
+        {isRendered && (
+          <FavoritesIcon className={cn('', isFavorite ? 'fill-pink' : 'fill-none stroke-black')} />
+        )}
       </button>
     )
   }

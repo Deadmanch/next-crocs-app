@@ -7,13 +7,14 @@ import UserIcon from '@/public/icons/header/profile.svg'
 import { NAVIGATION_MENU, NavigationRouting } from '@/mock/navigatiot-routing'
 import { Burger, HeaderCart, HeaderFavorites, HeaderSearch, MobileMenu } from '@/layout'
 import { Container, Button } from '@/components'
+import { useCartStore } from '@/store'
 
 interface HeaderProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export const Header = ({ className, ...props }: HeaderProps) => {
+  const { createCart } = useCartStore((state) => state)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const toogleMenu = () => setIsMenuOpen(!isMenuOpen)
-
   return (
     <div className='sticky top-0 z-50 border-b border-border bg-background-light-green'>
       <Container className='max-w-screen-1216'>
@@ -42,7 +43,7 @@ export const Header = ({ className, ...props }: HeaderProps) => {
                 <HeaderFavorites />
               </Link>
               <Link href={NavigationRouting.CHECKOUT}>
-                <HeaderCart />
+                <HeaderCart onClick={createCart} />
               </Link>
 
               <Burger className='960:hidden' isOpen={isMenuOpen} onClick={toogleMenu} />

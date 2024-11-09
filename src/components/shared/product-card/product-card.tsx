@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+
 import Link from 'next/link'
 import Image from 'next/image'
 import { ProductBadges, Title, Text, FavoritesButton, Separator } from '@/components'
@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils'
 import { PriceDataToFormatPrice } from '@/helpers/price-data-to-format-price'
 import CartIcon from '@/public/icons/cart-add.svg'
 import { IProduct } from '@/interfaces'
+import { useFavoritesStore } from '@/store'
 
 interface ProductCardProps extends React.HTMLAttributes<HTMLAnchorElement> {
   categorySlug?: string
@@ -15,12 +16,19 @@ interface ProductCardProps extends React.HTMLAttributes<HTMLAnchorElement> {
 
 export const ProductCard = ({ categorySlug, product, className, ...props }: ProductCardProps) => {
   const { title, images, slug, originalPrice, discountedPrice, tags } = product
-  const [isFavorite, setIsFavorite] = useState(false)
+
+  const isFavorite = useFavoritesStore((state) => state.isFavorite(product.id))
+  const addFavorite = useFavoritesStore((state) => state.addFavorite)
+  const removeFavorite = useFavoritesStore((state) => state.removeFavorite)
 
   const handleFavoriteClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     e.stopPropagation()
-    setIsFavorite(!isFavorite)
+    if (isFavorite) {
+      removeFavorite(product.id)
+    } else {
+      addFavorite(product)
+    }
   }
 
   return (
