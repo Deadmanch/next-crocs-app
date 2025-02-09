@@ -45,18 +45,17 @@ export const request = async <T, B = unknown>({
       method,
       headers: fetchHeaders,
       body: body ? JSON.stringify(body) : undefined,
-      credentials: 'include',
-      mode: 'no-cors'
+      credentials: 'include'
     })
 
     if (!res.ok) {
-      console.error(`Failed to ${method} data from ${url}:`, res.statusText)
+      console.error(`Failed to ${method} data1 from ${url}:`, res.statusText)
       throw new Error(res.statusText)
     }
 
-    return await res.json()
+    return res.json()
   } catch (error) {
-    console.error(`Failed to ${method} data from ${url}:`, error)
+    console.error(`Failed to ${method} data2 from ${url}:`, error)
     throw error
   }
 }

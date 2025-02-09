@@ -53,13 +53,15 @@ export const ProductClientPage = ({ product, className, ...props }: ProductPageP
           colorId: selectedColor,
           sizeId: selectedSize
         })
-        console.log('added to cart')
+        console.log('Product added to cart')
         setSelectedColor(undefined)
         setSelectedSize(undefined)
         setQuantity(1)
       } catch (error) {
         console.error(error)
       }
+    } else {
+      alert('Please select a color and size')
     }
   }
   return (

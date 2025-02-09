@@ -9,9 +9,11 @@ import { Burger, HeaderCart, HeaderFavorites, HeaderSearch, MobileMenu } from '@
 import { Container, Button } from '@/components'
 import { useCartStore } from '@/store'
 
-interface HeaderProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface HeaderProps extends React.HTMLAttributes<HTMLDivElement> {
+  isSearch?: boolean
+}
 
-export const Header = ({ className, ...props }: HeaderProps) => {
+export const Header = ({ className, isSearch = true, ...props }: HeaderProps) => {
   const { createCart } = useCartStore((state) => state)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const toogleMenu = () => setIsMenuOpen(!isMenuOpen)
@@ -34,7 +36,7 @@ export const Header = ({ className, ...props }: HeaderProps) => {
                 ))}
               </ul>
             </nav>
-            <HeaderSearch className='hidden w-[300px] 768:block 1216:w-[360px]' />
+            {isSearch && <HeaderSearch className='hidden w-[300px] 768:block 1216:w-[360px]' />}
             <div className='flex items-center gap-5 1216:gap-[61px]'>
               <Link className='hidden 960:block' href={NavigationRouting.PROFILE}>
                 <UserIcon />
@@ -50,7 +52,12 @@ export const Header = ({ className, ...props }: HeaderProps) => {
             </div>
           </div>
 
-          <MobileMenu className='960:hidden' isOpen={isMenuOpen} onClose={toogleMenu} />
+          <MobileMenu
+            isSearch={isSearch}
+            className='960:hidden'
+            isOpen={isMenuOpen}
+            onClose={toogleMenu}
+          />
         </header>
       </Container>
     </div>

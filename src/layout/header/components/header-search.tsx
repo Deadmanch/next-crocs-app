@@ -26,7 +26,7 @@ export const HeaderSearch = ({ className, onClose, ...props }: HeaderSearchProps
         const res = await searchProductsByTitle(searchQuery)
         setProducts(res)
       } catch (error) {
-        console.log(error)
+        console.log('@HEADER_SEARCH_ERROR', error)
       }
     },
     250,

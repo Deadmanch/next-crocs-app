@@ -1,4 +1,3 @@
-import { GoogleAnalytics } from '@next/third-parties/google'
 import { Fira_Code, Exo_2 } from 'next/font/google'
 import '@/styles/globals.css'
 import { Providers } from '@/components'
@@ -23,7 +22,6 @@ export default function RootLayout({
     <html lang='en'>
       <body className={`${exo2.variable} ${firaCode.variable} antialiased`}>
         <Providers>{children}</Providers>
-        <GoogleAnalytics gaId='G-Y7G99ZE8M0' />
       </body>
     </html>
   )

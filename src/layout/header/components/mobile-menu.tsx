@@ -9,11 +9,12 @@ import { NAVIGATION_MENU_MOBILE, NavigationRouting } from '@/mock/navigatiot-rou
 import { HeaderSearch } from './header-search'
 
 interface MobileMenuProps extends React.HTMLAttributes<HTMLDivElement> {
+  isSearch?: boolean
   isOpen: boolean
   onClose: () => void
 }
 
-export const MobileMenu = ({ isOpen, onClose, className }: MobileMenuProps) => {
+export const MobileMenu = ({ isOpen, onClose, isSearch = true, className }: MobileMenuProps) => {
   const variants = {
     open: {
       opacity: 1,
@@ -44,7 +45,7 @@ export const MobileMenu = ({ isOpen, onClose, className }: MobileMenuProps) => {
     >
       {isOpen && (
         <div className='flex flex-col gap-10 p-5'>
-          <HeaderSearch onClose={onClose} className='768:hidden' />
+          {isSearch && <HeaderSearch onClose={onClose} className='768:hidden' />}
           <nav className='flex flex-col gap-10'>
             <ul className='flex flex-col gap-5'>
               {NAVIGATION_MENU_MOBILE.map((item) => (
